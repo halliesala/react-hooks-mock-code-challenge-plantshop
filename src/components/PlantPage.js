@@ -25,7 +25,13 @@ function PlantPage() {
 
   function deletePlant(id) {
     const idx = plants.findIndex(plant => plant.id === id);
-    setPlants([...plants.slice(0, idx), ...plants.slice(idx + 1)])
+
+    fetch(`http://localhost:6001/plants/${id}`, {'method': 'DELETE'})
+    .then(() => {
+      console.log('delete successful');
+      setPlants([...plants.slice(0, idx), ...plants.slice(idx + 1)])
+    });
+    
   }
 
   function updatePlant(updatedPlant) {

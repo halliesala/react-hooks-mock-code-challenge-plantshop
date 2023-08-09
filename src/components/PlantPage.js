@@ -23,10 +23,16 @@ function PlantPage() {
     setPlants([...plants, plant]);
   }
 
+  function deletePlant(id) {
+    const idx = plants.findIndex(plant => plant.id === id);
+    setPlants([...plants.slice(0, idx), ...plants.slice(idx + 1)])
+  }
+
   function updatePlant(updatedPlant) {
-    const idx = plants.findIndex(plant => plant.id === updatedPlant.id)
+    const idx = plants.findIndex(plant => plant.id === updatedPlant.id);
     setPlants([...plants.slice(0, idx), updatedPlant, ...plants.slice(idx + 1)]);
   }
+
 
   function updatePrice(plant, price) {
 
@@ -59,7 +65,7 @@ function PlantPage() {
     <main>
       <NewPlantForm addPlant={addPlant} />
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-      <PlantList plants={filteredPlants} updatePrice={updatePrice}/>
+      <PlantList plants={filteredPlants} updatePrice={updatePrice} deletePlant={deletePlant}/>
     </main>
   );
 }

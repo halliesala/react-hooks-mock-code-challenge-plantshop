@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UpdatePriceForm from "./UpdatePriceForm";
 
-function PlantCard({plant, updatePrice}) {
+function PlantCard({plant, updatePrice, deletePlant}) {
 
   const [inStock, setInStock] = useState(true);
   const [showUpdatePrice, setShowUpdatePrice] = useState(false);
@@ -22,7 +22,14 @@ function PlantCard({plant, updatePrice}) {
       }
       <button 
         className={inStock ? "in-stock" : "out-of-stock"}
-        onClick={() => setInStock(!inStock)}>{inStock ? "In Stock" : "Out of Stock"}
+        onClick={() => setInStock(!inStock)}
+      >
+        {inStock ? "In Stock" : "Out of Stock"}
+      </button>
+      <button
+        onClick={() => deletePlant(plant.id)}
+      >
+        Delete
       </button>
     </li>
   );

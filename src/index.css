@@ -107,6 +107,7 @@ input:focus {
 
 .card img {
   width: 100%;
+  height: 70%;
 }
 
 .card button {
@@ -134,4 +135,8 @@ input:focus {
   .card {
     width: calc(20% - 2rem);
   }
+}
+
+.in-stock {
+  background-color: limegreen;
 }
